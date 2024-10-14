@@ -126,7 +126,6 @@ func getTopRepos(ctx context.Context, w http.ResponseWriter, client *github.Clie
 	}
 
 	WriteJSONResponse(w, http.StatusOK, &result)
-	return
 }
 
 func handleUserRepos(client *github.Client) http.Handler {
@@ -209,7 +208,6 @@ func WriteJSONResponse(w http.ResponseWriter, code int, v interface{}) {
 	w.WriteHeader(code)
 
 	_, _ = w.Write(data)
-	return
 }
 
 func WriteErrorResponse(w http.ResponseWriter, err error, status int) {
