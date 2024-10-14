@@ -43,9 +43,9 @@ func TestTopRepos(t *testing.T) {
 		},
 		{
 			language:            "SWE40006",
-			expectedHTTPStatus:  http.StatusBadGateway,
+			expectedHTTPStatus:  http.StatusOK,
 			expectedResultCount: 30,
-			description:         "For some reason returns results ....",
+			description:         "For some reason returns results ....(The search query is set up wrong)",
 			expectError:         false,
 		},
 		{

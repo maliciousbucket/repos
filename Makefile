@@ -21,7 +21,7 @@ vet:
 
 .PHONY: test
 test:
-	go test ../
+	go test ./...
 
 .PHONY: build ## Build binary
 build:
