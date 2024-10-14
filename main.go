@@ -15,8 +15,6 @@ import (
 	"time"
 )
 
-const urlTrendingPath = "/trending"
-
 var (
 	client *github.Client
 )

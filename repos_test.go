@@ -145,8 +145,3 @@ func newUserRequest(user string) *http.Request {
 	req, _ := http.NewRequest(http.MethodGet, fmt.Sprintf("/repos/%s", user), nil)
 	return req
 }
-
-func newPingRequest() *http.Request {
-	req, _ := http.NewRequest(http.MethodGet, "/ping", nil)
-	return req
-}
