@@ -3,7 +3,7 @@
 
 ![Test](https://github.com/maliciousbucket/repos/blob/main/actions/workflows/test.yaml/badge.svg) ![Build]() ![Publish]
 (https://github.com/maliciousbucket/repos/blob/main/actions/workflows/publish-image.yaml/badge.svg) ![Deploy]
-(https://github.com/maliciousbucket/repos/actions/workflows/ci.yaml/badge.svg)
+(https://github.com/maliciousbucket/repos/.github/workflows/ci.yaml/badge.svg)
 
 This is a little demo repository for a CI/CD pipeline.
 
