@@ -5,15 +5,28 @@ on:
     branches: ["release"]
   workflow_dispatch:
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Publish image to registry
-        uses: ./.github/actions/publish/action.yaml
+        uses: ./.github/actions/publish
+        with:
+          registry: "gchr.io"
+          username: ${{ github.actor }}
+          image-name: ${{ env.IMAGE_NAME }}
+          token: ${{ secrets.TOKEN }}
 
       - name: Deploy Application
-        uses: ./.github/actions/deploy/action.yaml
+        uses: ./.github/actions/deploy
+        with:
+          image-name: ${{ env.IMAGE_NAME }}
+          image-tag: "latest"
+          registry: ${{ env.REGISTRY }}
 
 
