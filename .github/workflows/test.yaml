@@ -9,6 +9,10 @@ on:
       - main
   workflow_dispatch:
 
+  repository_dispatch:
+    types:
+      - [test_run]
+
 env:
   GO_VERSION: 1.23.2
 

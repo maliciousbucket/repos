@@ -1,9 +1,14 @@
-name: Build, Test, Publish and Deploy
+name: Build, Test, Publish
 
 on:
   push:
-    branches: ["release"]
+    branches:
+      - release
   workflow_dispatch:
+
+  repository_dispatch:
+    types:
+      - [trigger_ci]
 
 env:
   REGISTRY: ghcr.io
@@ -41,14 +46,3 @@ jobs:
           username: ${{ github.actor }}
           image-name: ${{ env.IMAGE_NAME }}
           token: ${{ secrets.TOKEN }}
-  deploy:
-    runs-on: self-hosted
-    steps:
-      - name: Checkout Repository
-      - uses: actions/checkout@v4
-      - name: Deploy Application
-        uses: ./.github/actions/deploy
-        with:
-          image-name: ${{ env.IMAGE_NAME }}
-          image-tag: "latest"
-          registry: ${{ env.REGISTRY }}

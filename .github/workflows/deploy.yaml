@@ -1,0 +1,36 @@
+name: Build, Test, Publish and Deploy
+
+on:
+  workflow_run:
+    workflows:
+      - Build, Test, Publish
+    types:
+      - completed
+  workflow_dispatch:
+
+  repository_dispatch:
+    types:
+      - [ deployment ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout Repository
+      - uses: actions/checkout@v4
+      - name: Deploy Application
+        uses: ./.github/actions/deploy
+        with:
+          image-name: ${{ env.IMAGE_NAME }}
+          image-tag: "latest"
+          registry: ${{ env.REGISTRY }}
+  failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+        - run: echo 'The build and publish workflow failed'
