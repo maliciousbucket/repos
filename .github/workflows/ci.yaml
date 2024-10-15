@@ -1,0 +1,21 @@
+name: Build, Test, Publish and Deploy
+
+on:
+  push:
+    branches: ["release"]
+  workflow_dispatch:
+
+jobs:
+  build-test:
+   - name: Build and Test Application
+     uses: ./github/actions/test.yaml
+
+  publish:
+    - name: Publish image to registry
+      uses: ./github/actions/publish-image.yaml
+
+  deploy:
+    - name: Deploy Application
+      uses: ./github/actions/deploy.yaml
+
+
