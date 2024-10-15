@@ -27,7 +27,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-
+      - name: Checkout Repository
+        uses: actions/checkout@v4
       - name: Publish image to registry
         uses: ./.github/actions/publish
         with:
@@ -38,6 +39,8 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
+      - name: Checkout Repository
+      - uses: actions/checkout@v4
       - name: Deploy Application
         uses: ./.github/actions/deploy
         with:
