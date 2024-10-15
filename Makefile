@@ -51,16 +51,16 @@ run: fmt vet
 
 .PHONY: workflow # Trigger a workflow by passing in an action
 workflow:
-	$(shell) tools/trigger-workflow.sh ${ACTION} ${ENV}
+	bash tools/trigger-workflow.sh ${ACTION} ${ENV}
 
 
 .PHONY: workflow-ci # Trigger the CI workflow
 workflow-ci:
 	bash tools/trigger-workflow.sh ci ${ENV}
 
-.PHONY: workflow-deployment # Trigger the deployment workflow
+.PHONY: workflow-deploy # Trigger the deployment workflow
 workflow-deployment:
-	$(shell) tools/trigger-workflow.sh deployment ${ENV}
+	bash tools/trigger-workflow.sh deployment ${ENV}
 
 .PHONY: workflow-test # Trigger the Test Run workflow
 workflow-test:
