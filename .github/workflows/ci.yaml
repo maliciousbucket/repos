@@ -17,7 +17,7 @@ jobs:
       - name: Publish image to registry
         uses: ./.github/actions/publish
         with:
-          registry: "gchr.io"
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           image-name: ${{ env.IMAGE_NAME }}
           token: ${{ secrets.TOKEN }}
