@@ -59,7 +59,7 @@ workflow-ci:
 	bash tools/trigger-workflow.sh ci ${ENV}
 
 .PHONY: workflow-deploy # Trigger the deployment workflow
-workflow-deployment:
+workflow-deploy:
 	bash tools/trigger-workflow.sh deployment ${ENV}
 
 .PHONY: workflow-test # Trigger the Test Run workflow
