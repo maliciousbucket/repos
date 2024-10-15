@@ -2,7 +2,6 @@
 
 read_env() {
   local filePath="${1:-.env}"
-
   if [ ! -f "$filePath" ]; then
     echo "missing ${filePath}"
     exit 1
