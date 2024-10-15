@@ -8,12 +8,26 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  GO_VERSION: 1.23.2
 
 jobs:
-  ci:
+  lint-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Lint
+        uses: ./.github/actions/lint
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - name: test
+        uses: ./.github/actions/test
+        with:
+          go-version: ${{ env.GO_VERSION }}
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+
       - name: Publish image to registry
         uses: ./.github/actions/publish
         with:
