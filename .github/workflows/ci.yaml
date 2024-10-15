@@ -9,17 +9,13 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
+      - name: Build and Test Application
+        uses: ./.github/actions/test.yaml
 
-    build-test:
-     - name: Build and Test Application
-       uses: ./github/actions/test.yaml
-
-    publish:
       - name: Publish image to registry
-        uses: ./github/actions/publish-image.yaml
+        uses: ./.github/actions/publish-image.yaml
 
-    deploy:
       - name: Deploy Application
-        uses: ./github/actions/deploy.yaml
+        uses: ./.github/actions/deploy.yaml
 
 
