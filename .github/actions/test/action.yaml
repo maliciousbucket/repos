@@ -1,0 +1,20 @@
+name: "Test"
+description: "Test Go Application"
+
+inputs:
+  go-version:
+    description: "Version of Golang to use"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    - name: Install Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: ${{ inputs.go-version }}
+    - name: Test
+      run: "go test -v ./..."
+      shell: bash

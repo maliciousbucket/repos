@@ -21,7 +21,9 @@ jobs:
           username: ${{ github.actor }}
           image-name: ${{ env.IMAGE_NAME }}
           token: ${{ secrets.TOKEN }}
-
+  deploy:
+    runs-on: self-hosted
+    steps:
       - name: Deploy Application
         uses: ./.github/actions/deploy
         with:
