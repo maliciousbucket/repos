@@ -8,9 +8,9 @@ on:
       - completed
   workflow_dispatch:
 
-repository_dispatch:
-  types:
-    - [ deployment ]
+  repository_dispatch:
+    types:
+      - deployment
 
 env:
   REGISTRY: ghcr.io

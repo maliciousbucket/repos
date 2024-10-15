@@ -6,9 +6,9 @@ on:
       - release
   workflow_dispatch:
 
-repository_dispatch:
+  repository_dispatch:
   types:
-    - [trigger_ci]
+    - trigger_ci
 
 env:
   REGISTRY: ghcr.io
