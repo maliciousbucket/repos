@@ -6,16 +6,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-test:
-   - name: Build and Test Application
-     uses: ./github/actions/test.yaml
+  ci:
+    runs-on: ubuntu-latest
+    steps:
 
-  publish:
-    - name: Publish image to registry
-      uses: ./github/actions/publish-image.yaml
+    build-test:
+     - name: Build and Test Application
+       uses: ./github/actions/test.yaml
 
-  deploy:
-    - name: Deploy Application
-      uses: ./github/actions/deploy.yaml
+    publish:
+      - name: Publish image to registry
+        uses: ./github/actions/publish-image.yaml
+
+    deploy:
+      - name: Deploy Application
+        uses: ./github/actions/deploy.yaml
 
 
