@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -eux
 set -o pipefail
@@ -50,7 +50,7 @@ case "${action}" in
   run_workflow trigger_ci
   ;;
   *)
-  echo -e "Unknown workflow type: ${action}"
+  echo  "Unknown workflow type: ${action}"
   exit 1
   ;;
 esac
