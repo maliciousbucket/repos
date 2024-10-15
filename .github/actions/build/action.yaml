@@ -17,4 +17,3 @@ runs:
       run: |
         go build .
       shell: bash
-      
