@@ -17,6 +17,11 @@ runs:
       uses: actions/setup-go@v5
       with:
         go-version: ${{ inputs.go-version }}
+    - name: Install Dependencies
+      id: dependencies-step
+      run: |
+        go get .
+      shell: bash
     - name: golangci-lint
       id: lint-step
       uses: golangci/golangci-lint-action@v3
