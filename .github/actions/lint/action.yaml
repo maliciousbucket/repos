@@ -11,11 +11,14 @@ runs:
   steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
+      id: checkout-step
     - name: Install Go
+      id: install-step
       uses: actions/setup-go@v5
       with:
         go-version: ${{ inputs.go-version }}
     - name: golangci-lint
+      id: lint-step
       uses: golangci/golangci-lint-action@v3
       with:
         version: v1.61.0

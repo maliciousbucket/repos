@@ -21,7 +21,9 @@ runs:
   steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      id: checkout-step
     - name: Log in to the Container registry
+      id: login-step
       uses: docker/login-action@v3
       with:
         registry: ${{ inputs.registry }}
@@ -43,6 +45,7 @@ runs:
         labels: ${{ steps.meta.outputs.labels }}
 
     - name: Generate artifact attestation
+      id: artifact-step
       uses: actions/attest-build-provenance@v1
       with:
         subject-name: ${{ inputs.registry }}/${{ inputs.image-name }}

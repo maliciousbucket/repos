@@ -16,11 +16,14 @@ runs:
   using: "composite"
   steps:
     - name: Pull docker image
+      id: pull-step
       run: docker pull  ${{ inputs.registry }}/${{ inputs.image-name}}:${{ inputs.image-tag }}
       shell: bash
     - name: Delete old container
+      id: delete-step
       run: docker rm -f go-app-container
       shell: bash
     - name: Run docker container
+      id: run-step
       run: docker run -d -p 4040:4040 --name go-app-container ${{ inputs.registry }}/${{ inputs.image-name}}:${{ inputs.image-tag }}
       shell: bash

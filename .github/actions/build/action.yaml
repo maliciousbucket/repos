@@ -2,13 +2,19 @@ name: Build
 description: Build Go App
 
 runs:
+  using: "composite"
   steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      id: checkout-step
     - name: Install Go
+      id: install-step
       uses: actions/setup-go@v5
       with:
         go-version: 1.23.2
     - name: Build Application
+      id: build-step
       run: |
         go build .
+      shell: bash
       
