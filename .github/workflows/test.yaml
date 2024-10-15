@@ -18,6 +18,15 @@ env:
 
 
 jobs:
+
+  delay:
+    if: ${{ github.event.client_payload.delay != null && github.event.client_payload.delay != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep for duration
+        run: sleep ${{ github.event.client_payload.delay }}
+        shell: bash
+
   lint:
     name: Lint Go
     runs-on: ubuntu-latest

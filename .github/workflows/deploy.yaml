@@ -17,6 +17,15 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  delay:
+    if: ${{ github.event.client_payload.delay != null && github.event.client_payload.delay != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep for duration
+        run: sleep ${{ github.event.client_payload.delay }}
+        shell: bash
+
+
   deploy:
     runs-on: self-hosted
     steps:
