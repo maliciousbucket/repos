@@ -36,16 +36,16 @@ jobs:
           username: ${{ github.actor }}
           image-name: ${{ env.IMAGE_NAME }}
           token: ${{ secrets.TOKEN }}
-  deploy:
-    runs-on: self-hosted
-    steps:
-      - name: Checkout Repository
-      - uses: actions/checkout@v4
-      - name: Deploy Application
-        uses: ./.github/actions/deploy
-        with:
-          image-name: ${{ env.IMAGE_NAME }}
-          image-tag: "latest"
-          registry: ${{ env.REGISTRY }}
-
+#  deploy:
+#    runs-on: self-hosted
+#    steps:
+#      - name: Checkout Repository
+#      - uses: actions/checkout@v4
+#      - name: Deploy Application
+#        uses: ./.github/actions/deploy
+#        with:
+#          image-name: ${{ env.IMAGE_NAME }}
+#          image-tag: "latest"
+#          registry: ${{ env.REGISTRY }}
+#
 
