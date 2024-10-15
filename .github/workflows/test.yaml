@@ -33,6 +33,8 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: "1.23.2"
+      - name: Install dependencies
+        run: go get .
       - uses: actions/checkout@v4
       - name: Test
         run: go test -v ./...

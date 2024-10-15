@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/google/go-github/v66/github"
 	"io"
-	"log"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -59,7 +58,6 @@ func TestTopRepos(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.description, func(t *testing.T) {
 			request := newLanguageRequest(test.language)
-			log.Println(request)
 			w := httptest.NewRecorder()
 			mux.ServeHTTP(w, request)
 
