@@ -64,7 +64,7 @@ workflow-deploy: ## Trigger the Deployment workflow
 
 .PHONY: workflow-test
 workflow-test: ## Trigger the Test Run workflow
-	@bash  tools/trigger-workflow.sh test-run ${ENV}
+	@bash  tools/trigger-workflow.sh test-run ${ENV} ${DELAY}
 
 
 

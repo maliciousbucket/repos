@@ -1,4 +1,4 @@
-name: Build, Test, Publish and Deploy
+name: Deploy
 
 on:
   workflow_run:
@@ -37,8 +37,3 @@ jobs:
           image-name: ${{ env.IMAGE_NAME }}
           image-tag: "main"
           registry: ${{ env.REGISTRY }}
-#  failure:
-#    runs-on: ubuntu-latest
-#    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-#    steps:
-#        - run: echo 'The build and publish workflow failed'
