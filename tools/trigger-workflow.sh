@@ -26,7 +26,6 @@ run_workflow() {
   local TOKEN=$GITHUB_TOKEN
   local REPO_NAME=$GITHUB_REPOSITORY
   local ACTION_HOOK=$1
-  echo $TOKEN
 
   RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
        -H "Accept: application/vnd.github+json" \

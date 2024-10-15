@@ -27,7 +27,7 @@ jobs:
         uses: ./.github/actions/deploy
         with:
           image-name: ${{ env.IMAGE_NAME }}
-          image-tag: "release"
+          image-tag: "main"
           registry: ${{ env.REGISTRY }}
 #  failure:
 #    runs-on: ubuntu-latest

@@ -13,58 +13,58 @@ $(LOCALBIN):
 
 ##@ Development
 
-.PHONY: fmt ## Run go fmt against code
-fmt:
+.PHONY: fmt
+fmt: ## Run go fmt against code
 	go fmt ./...
 
-.PHONY: vet ## Run go vet against code
-vet:
+.PHONY: vet
+vet: ## Run go vet against code
 	go vet ./...
 
 .PHONY: test
-test:
+test: ## Run unit tests
 	go test ./...
 
 ##@ Build
 
-.PHONY: build ## Build binary
-build:
+.PHONY: build
+build: ## Build binary
 	go build -o bin/repos .
 
-.PHONY: docker-build # Build Dockerfile
-docker-build:
+.PHONY: docker-build
+docker-build: ## Build Dockerfile
 	docker build -t ${IMG} .
 
-.PHONY: docker-push # Push image to a container registry
-docker-push:
+.PHONY: docker-push
+docker-push: ## Push image to a container registry
 	docker push ${IMG}
 
-.PHONY: docker-buildx # Build and push the image to a container registry
-docker-buildx:
+.PHONY: docker-buildx
+docker-buildx: ## Build and push the image to a container registry
 	docker buildx --push --tag ${IMG} -f Dockerfile
 
-.PHONY: run # Run the application locally
-run: fmt vet
+.PHONY: run
+run: fmt vet ## Run the application locally
 	go run .
 
 ##@ Workflows
 
-.PHONY: workflow # Trigger a workflow by passing in an action
-workflow:
-	bash tools/trigger-workflow.sh ${ACTION} ${ENV}
+.PHONY: workflow
+workflow: ## Trigger a workflow by passing in an action
+	@bash tools/trigger-workflow.sh ${ACTION} ${ENV}
 
 
-.PHONY: workflow-ci # Trigger the CI workflow
-workflow-ci:
-	bash tools/trigger-workflow.sh ci ${ENV}
+.PHONY: workflow-ci
+workflow-ci: ## Trigger the CI workflow
+	@bash tools/trigger-workflow.sh ci ${ENV}
 
-.PHONY: workflow-deploy # Trigger the deployment workflow
-workflow-deploy:
-	bash tools/trigger-workflow.sh deployment ${ENV}
+.PHONY: workflow-deploy
+workflow-deploy: ## Trigger the Deployment workflow
+	@bash tools/trigger-workflow.sh deployment ${ENV}
 
-.PHONY: workflow-test # Trigger the Test Run workflow
-workflow-test:
-	bash  tools/trigger-workflow.sh test-run ${ENV}
+.PHONY: workflow-test
+workflow-test: ## Trigger the Test Run workflow
+	@bash  tools/trigger-workflow.sh test-run ${ENV}
 
 
 

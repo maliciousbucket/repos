@@ -3,7 +3,7 @@ name: Build, Test, Publish
 on:
   push:
     branches:
-      - release
+      - main
   workflow_dispatch:
 
   repository_dispatch:
@@ -16,6 +16,15 @@ env:
   GO_VERSION: 1.23.2
 
 jobs:
+  delay:
+    if: ${{ github.event.client_payload.delay != null && github.event.client_payload.delay != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep for duration
+        run: sleep ${{ github.event.client_payload.delay }}
+        shell: bash
+
+
   lint-test:
     runs-on: ubuntu-latest
     steps:
