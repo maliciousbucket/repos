@@ -25,9 +25,10 @@ runs:
       shell: bash
     - name: Run docker container
       id: run-step
-      run: docker run -d -p 4040:4040 --name go-app-container ghcr.io/maliciousbucket/repos:release
+      run: docker run -d -p 4040:4040 --name go-app-container ${{ inputs.registry }}/${{ inputs.image-name}}:${{ inputs.image-tag }}
+#      ghcr.io/maliciousbucket/repos:release
 
 
-#        docker pull ghcr.io/maliciousbucket/repos:release   ${{ inputs.registry }}/${{ inputs.image-name}}:${{ inputs.image-tag }}
+#        docker pull ghcr.io/maliciousbucket/repos:release
 
       shell: bash
