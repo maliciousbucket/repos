@@ -13,7 +13,7 @@ inputs:
     required: true
 
 runs:
-  using: composite
+  using: "composite"
   steps:
     - name: Pull docker image
       run: docker pull  ${{ inputs.registry }}/${{ inputs.image-name}}:${{ inputs.image-tag }}
