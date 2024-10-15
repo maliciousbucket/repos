@@ -19,7 +19,7 @@ env:
 jobs:
   deploy:
     runs-on: self-hosted
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+#    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -29,8 +29,8 @@ jobs:
           image-name: ${{ env.IMAGE_NAME }}
           image-tag: "release"
           registry: ${{ env.REGISTRY }}
-  failure:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    steps:
-        - run: echo 'The build and publish workflow failed'
+#  failure:
+#    runs-on: ubuntu-latest
+#    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+#    steps:
+#        - run: echo 'The build and publish workflow failed'
