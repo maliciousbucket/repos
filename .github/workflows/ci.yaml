@@ -1,9 +1,14 @@
 name: Build, Test, Publish
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows:
+      - Go Lint & Test
+    types:
+      - completed
+#  push:
+#    branches:
+#      - main
   workflow_dispatch:
 
   repository_dispatch:
