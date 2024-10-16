@@ -184,7 +184,7 @@ func handlePing() http.Handler {
 		pingCounter.Inc()
 		resTime := time.Now().Format("2006-01-02 15:04:05")
 		res := &PingResponse{
-			Reply: "Pong",
+			Reply: "I LOVE swE40006",
 			Time:  resTime,
 		}
 		WriteJSONResponse(w, http.StatusOK, res)
